@@ -19,7 +19,7 @@ class DateEntry {
     }
 
     public int getDay() {
-       return day;
+        return day;
     }
 
     public int getMonth() {

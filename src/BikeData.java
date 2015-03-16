@@ -1,11 +1,10 @@
 class BikeData {
-
     private final int hireTime;
     private final int bikeHires;
 
-    public BikeData(int hireTime, int bikeHires) {
-        this.hireTime = hireTime;
-        this.bikeHires = hireTime;
+    public BikeData(String hireTime, String bikeHires) {
+        this.hireTime = Integer.parseInt(hireTime);
+        this.bikeHires = Integer.parseInt(bikeHires);
     }
 
     public int getHireTime() {

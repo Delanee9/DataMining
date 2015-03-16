@@ -1,4 +1,4 @@
-public class SingleInstance {
+class SingleInstance {
     private final DateEntry dateEntry;
     private final Pollution pollution;
     private final BikeData bikeData;
@@ -14,7 +14,7 @@ public class SingleInstance {
     }
 
     public Pollution getPollution() {
-       return pollution;
+        return pollution;
     }
 
     public BikeData getBikeData() {
