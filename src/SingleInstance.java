@@ -2,7 +2,7 @@ class SingleInstance {
     private final DateEntry dateEntry;
     private final Pollution pollution;
     private final BikeData bikeData;
-    private int clusterClass;
+    private int clusterClass = 100;
 
     public SingleInstance(DateEntry dateEntry, Pollution pollution, BikeData bikeData) {
         this.dateEntry = dateEntry;

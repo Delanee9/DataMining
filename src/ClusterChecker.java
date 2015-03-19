@@ -26,6 +26,14 @@ class ClusterChecker {
         }
     }
 
+    public void calculateClosestClustersToData(){
+        for(SingleInstance s : initialDataset)
+        {
+            findClosetCluster(s);
+            System.out.println(s.getClusterClass());
+        }
+    }
+
     /**
      * Check the distance from a point to the centroids.
      * @param singleInstance SingleInstance

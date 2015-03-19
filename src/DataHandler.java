@@ -23,6 +23,12 @@ class DataHandler {
 
             centroids = calculateStartingCentroids(dataset, numClusters);
 
+            //have dataset, have initial centroids
+
+            ClusterChecker checker = new ClusterChecker(dataset,centroids);
+            checker.calculateClosestClustersToData();
+
+
         } catch(Exception e) {
             System.out.println("Failure in Main - " + e);
         }
