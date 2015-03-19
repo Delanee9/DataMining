@@ -20,4 +20,15 @@ class ClusterChecker {
     private int distanceChecker(SingleInstance singleInstance) {
         return 0;
     }
+
+    /**
+     * Check the distance from a point to a centroid.
+     * @param singleInstance SingleInstance
+     * @param centroid Centroid
+     * @return double
+     */
+    public double distance(SingleInstance singleInstance, Centroid centroid) {
+        return Math.sqrt((singleInstance.getPollution().getNitricOxide() - centroid.getNitricOxide()) * (singleInstance.getPollution().getSulphurDioxide() - centroid.getSulphurDioxide()) * (singleInstance
+        .getPollution().getOzone() - centroid.getOzone()));
+    }
 }
