@@ -4,9 +4,9 @@ class Centroid {
     private final double ozone;
 
     public Centroid(double nitricOxide, double sulphurDioxide, double ozone) {
-        this.nitricOxide = nitricOxide;
-        this.sulphurDioxide = sulphurDioxide;
-        this.ozone = ozone;
+        this.nitricOxide = nitricOxide; //X Coord
+        this.sulphurDioxide = sulphurDioxide;   //Y Coord
+        this.ozone = ozone; //Z Coord
     }
 
     public double getNitricOxide() {
