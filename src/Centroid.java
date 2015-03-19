@@ -1,12 +1,12 @@
-class Pollution {
+class Centroid {
     private final double nitricOxide;
     private final double sulphurDioxide;
     private final double ozone;
 
-    public Pollution(String nitricOxide, String sulphurDioxide, String ozone) {
-        this.nitricOxide = Double.parseDouble(nitricOxide);
-        this.sulphurDioxide = Double.parseDouble(sulphurDioxide);
-        this.ozone = Double.parseDouble(ozone);
+    public Centroid(double nitricOxide, double sulphurDioxide, double ozone) {
+        this.nitricOxide = nitricOxide;
+        this.sulphurDioxide = sulphurDioxide;
+        this.ozone = ozone;
     }
 
     public double getNitricOxide() {

@@ -1,11 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
 
 class DataHandler {
     public static void main(String[] args) {
-        List<SingleInstance> dataset = new ArrayList<>();
+        ArrayList<SingleInstance> dataset = new ArrayList<>();
         BufferedReader bufferedReader;
         String line;
         String [] tokens;
