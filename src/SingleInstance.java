@@ -2,6 +2,7 @@ class SingleInstance {
     private final DateEntry dateEntry;
     private final Pollution pollution;
     private final BikeData bikeData;
+    private int clusterClass;
 
     public SingleInstance(DateEntry dateEntry, Pollution pollution, BikeData bikeData) {
         this.dateEntry = dateEntry;
@@ -19,5 +20,13 @@ class SingleInstance {
 
     public BikeData getBikeData() {
         return bikeData;
+    }
+
+    public void setClusterClass(int clusterClass) {
+        this.clusterClass = clusterClass;
+    }
+
+    public int getClusterClass() {
+        return clusterClass;
     }
 }

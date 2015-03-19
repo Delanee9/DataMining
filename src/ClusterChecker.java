@@ -5,7 +5,6 @@ class ClusterChecker {
     ArrayList<SingleInstance> clusterOne;
     ArrayList<SingleInstance> clusterTwo;
     ArrayList<SingleInstance> clusterThree;
-    ArrayList<SingleInstance> clusterFour;
     ArrayList<Centroid> centroids;
 
     public ClusterChecker(ArrayList<SingleInstance> dataset, ArrayList<Centroid> centroids) {
@@ -13,22 +12,32 @@ class ClusterChecker {
         this.centroids = centroids;
     }
 
-    private int findClosetCluster(SingleInstance singleInstance) {
-        return 0;
-    }
+    /**
+     * Find the closet cluster and set the cluster class to that cluster.
+     * @param singleInstance SingleInstance
+     */
+    private void findClosetCluster(SingleInstance singleInstance) {
+        double [] distance = distance(singleInstance);
 
-    private int distanceChecker(SingleInstance singleInstance) {
-        return 0;
+        for(int i = 0; i < distance.length; i++) {
+            if(distance[i] < singleInstance.getClusterClass()) {
+                singleInstance.setClusterClass(i);
+            }
+        }
     }
 
     /**
-     * Check the distance from a point to a centroid.
+     * Check the distance from a point to the centroids.
      * @param singleInstance SingleInstance
-     * @param centroid Centroid
      * @return double
      */
-    public double distance(SingleInstance singleInstance, Centroid centroid) {
-        return Math.sqrt((singleInstance.getPollution().getNitricOxide() - centroid.getNitricOxide()) * (singleInstance.getPollution().getSulphurDioxide() - centroid.getSulphurDioxide()) * (singleInstance
-        .getPollution().getOzone() - centroid.getOzone()));
+    public double[] distance(SingleInstance singleInstance) {
+        double [] results = new double[centroids.size()];
+        int index = 0;
+        for(Centroid centroid : centroids) {
+            results[index] = Math.sqrt((singleInstance.getPollution().getNitricOxide() - centroid.getNitricOxide()) * (singleInstance.getPollution().getSulphurDioxide() - centroid.getSulphurDioxide()) * (singleInstance.getPollution().getOzone() - centroid.getOzone()));
+            index++;
+        }
+        return results;
     }
 }
