@@ -2,9 +2,6 @@ import java.util.ArrayList;
 
 class ClusterChecker {
     ArrayList<SingleInstance> initialDataset;
-    ArrayList<SingleInstance> clusterOne;
-    ArrayList<SingleInstance> clusterTwo;
-    ArrayList<SingleInstance> clusterThree;
     ArrayList<Centroid> centroids;
 
     public ClusterChecker(ArrayList<SingleInstance> dataset, ArrayList<Centroid> centroids) {
@@ -19,10 +16,15 @@ class ClusterChecker {
     private void findClosetCluster(SingleInstance singleInstance) {
         double [] distance = distance(singleInstance);
 
-        for(int i = 0; i < distance.length; i++) {
-            if(distance[i] < singleInstance.getClusterClass()) {
-                singleInstance.setClusterClass(i);
+        for(int i = 0; i < 3; i++) {
+//            if(i == 0) {
+//                singleInstance.setClusterClass(i);
+//            }
+//            if(distance[i] < singleInstance.getClusterClass()) {
+            if(distance[i] <= singleInstance.getClusterClass()) {
+                singleInstance.setClusterClass(((int) distance[i]));
             }
+//            }
         }
     }
 
@@ -43,7 +45,7 @@ class ClusterChecker {
         double [] results = new double[centroids.size()];
         int index = 0;
         for(Centroid centroid : centroids) {
-            results[index] = Math.sqrt((singleInstance.getPollution().getNitricOxide() - centroid.getNitricOxide()) * (singleInstance.getPollution().getSulphurDioxide() - centroid.getSulphurDioxide()) * (singleInstance.getPollution().getOzone() - centroid.getOzone()));
+            results[index] = Math.sqrt(Math.pow((singleInstance.getPollution().getNitricOxide() - centroid.getNitricOxide()), 2) + Math.pow((singleInstance.getPollution().getSulphurDioxide() - centroid.getSulphurDioxide()), 2) + Math.pow((singleInstance.getPollution().getOzone() - centroid.getOzone()), 2));
             index++;
         }
         return results;

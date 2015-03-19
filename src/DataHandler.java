@@ -37,7 +37,7 @@ class DataHandler {
     public static ArrayList<Centroid> calculateStartingCentroids(ArrayList<SingleInstance> data, int numClusters)
     {
         ArrayList<Centroid> centroidList = new ArrayList<>();
-        while(centroidList.size()< numClusters){
+        while(centroidList.size() < numClusters){
             SingleInstance dataRow = data.get(randInt(0, data.size() - 1));
             Pollution pollutionData = dataRow.getPollution();
             centroidList.add(new Centroid(pollutionData.getNitricOxide(),pollutionData.getSulphurDioxide(),pollutionData.getOzone()));
