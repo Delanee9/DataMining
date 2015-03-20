@@ -10,7 +10,7 @@ class DataHandler {
         String line;
         String [] tokens;
         final int numClusters = 3;
-        ArrayList<Centroid> centroids = new ArrayList<>();
+        ArrayList<Centroid> centroids;
 
         try {
             bufferedReader = new BufferedReader(new FileReader(args[0]));

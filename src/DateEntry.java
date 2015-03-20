@@ -7,7 +7,7 @@ class DateEntry {
     private final int dayOfWeek;
 
     public DateEntry(String date) {
-        String [] dateArray = date.trim().split("/");
+        String[] dateArray = date.trim().split("/");
         this.day = Integer.parseInt(dateArray[0]);
         this.month = Integer.parseInt(dateArray[1]);
         this.year = Integer.parseInt(dateArray[2]);
