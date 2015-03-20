@@ -28,6 +28,7 @@ class DataHandler {
 
             ClusterChecker checker = new ClusterChecker(dataset,centroids);
             checker.recheckLoop();
+            System.out.println("test");
 
 
         } catch(Exception e) {

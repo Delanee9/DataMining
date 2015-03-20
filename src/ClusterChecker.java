@@ -19,7 +19,7 @@ class ClusterChecker {
         double[] distance = distance(singleInstance);
 
         for(int i = 0; i < 3; i++) {
-            if(distance[i] <= singleInstance.getDistance()) {
+            if(distance[i] < singleInstance.getDistance()) {
                 singleInstance.setClusterClass(i);
                 singleInstance.setDistance(distance[i]);
                 isFinished = true;
@@ -75,7 +75,8 @@ class ClusterChecker {
                 count++;
             }
         }
-        return new Centroid(averageNitricOxide / count, averageSulphurDioxide / count, averageOzone / count);
+        Centroid c = new Centroid(averageNitricOxide / count, averageSulphurDioxide / count, averageOzone / count);
+        return c;
     }
 
     /**
@@ -87,14 +88,10 @@ class ClusterChecker {
         while(isFinished) {
             isFinished = false;
             isFinished = calculateClosestClustersToData(isFinished);
-            if (isFinished == true) {
-                centroids = new ArrayList<>(Arrays.asList(updatedCentroid(0), updatedCentroid(1), updatedCentroid(2)));
-            } else {
-                break;
-            }
+            centroids = new ArrayList<>(Arrays.asList(updatedCentroid(0), updatedCentroid(1), updatedCentroid(2)));
             count++;
             System.out.println(count);
         }
-            //System.out.println("Times Run: " + count);
+        System.out.println("Times Run: " + count);
     }
 }
