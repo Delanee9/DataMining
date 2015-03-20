@@ -2,6 +2,7 @@ class Centroid {
     private double nitricOxide;
     private double sulphurDioxide;
     private double ozone;
+    private boolean isFinished = false;
 
     public Centroid(double nitricOxide, double sulphurDioxide, double ozone) {
         this.nitricOxide = nitricOxide; //X Coord
@@ -19,5 +20,9 @@ class Centroid {
 
     public double getOzone() {
         return ozone;
+    }
+
+    public boolean isFinished() {
+        return true;
     }
 }
