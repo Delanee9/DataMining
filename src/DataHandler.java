@@ -9,7 +9,7 @@ class DataHandler {
         BufferedReader bufferedReader;
         String line;
         String [] tokens;
-        final int numClusters = 3;
+        final int numClusters = 4;
         ArrayList<Centroid> centroids;
 
 
@@ -49,9 +49,7 @@ class DataHandler {
 
     public static int randInt(int min, int max) {
         Random rand = new Random();
-
         return rand.nextInt((max - min) + 1) + min;
-
     }
     public static void printTableToConsole(ArrayList<SingleInstance> dataset)
     {
