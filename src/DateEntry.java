@@ -1,6 +1,7 @@
 import java.util.Calendar;
 
 class DateEntry {
+    private final String date;
     private final int day;
     private final int month;
     private final int year;
@@ -11,6 +12,7 @@ class DateEntry {
         this.day = Integer.parseInt(dateArray[0]);
         this.month = Integer.parseInt(dateArray[1]);
         this.year = Integer.parseInt(dateArray[2]);
+        this.date = date;
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
@@ -32,5 +34,9 @@ class DateEntry {
 
     public int getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

@@ -84,14 +84,10 @@ class ClusterChecker {
      */
     public void recheckLoop() {
         boolean isFinished = true;
-        int count = 0;
         while(isFinished) {
             isFinished = false;
             isFinished = calculateClosestClustersToData(isFinished);
             centroids = new ArrayList<>(Arrays.asList(updatedCentroid(0), updatedCentroid(1), updatedCentroid(2)));
-            count++;
-            System.out.println(count);
         }
-        System.out.println("Times Run: " + count);
     }
 }
