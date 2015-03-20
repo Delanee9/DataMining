@@ -12,6 +12,7 @@ class DataHandler {
         final int numClusters = 3;
         ArrayList<Centroid> centroids;
 
+
         try {
             bufferedReader = new BufferedReader(new FileReader(args[0]));
             while((line = bufferedReader.readLine()) != null) {

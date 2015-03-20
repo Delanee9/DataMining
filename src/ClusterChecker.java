@@ -15,25 +15,28 @@ class ClusterChecker {
      *
      * @param singleInstance SingleInstance
      */
-    private void findClosetCluster(SingleInstance singleInstance) {
+    private boolean findClosetCluster(SingleInstance singleInstance, boolean isFinished) {
         double[] distance = distance(singleInstance);
 
         for(int i = 0; i < 3; i++) {
             if(distance[i] <= singleInstance.getDistance()) {
                 singleInstance.setClusterClass(i);
                 singleInstance.setDistance(distance[i]);
+                isFinished = true;
             }
         }
+        return isFinished;
     }
 
     /**
      * Loop through each element in the dataset and assign it to a cluster.
      */
-    private void calculateClosestClustersToData() {
+    private boolean calculateClosestClustersToData(boolean isFinished) {
         for(SingleInstance s : initialDataset) {
-            findClosetCluster(s);
-            System.out.println(s.getClusterClass());
+             isFinished = findClosetCluster(s,isFinished);
+            //System.out.println(s.getClusterClass());
         }
+        return isFinished;
     }
 
     /**
@@ -79,9 +82,19 @@ class ClusterChecker {
      * Checks the elements in each cluster 10 times to ensure higher accuracy.
      */
     public void recheckLoop() {
-        for(int i = 0; i < 10; i++) {
-            calculateClosestClustersToData();
-            centroids = new ArrayList<>(Arrays.asList(updatedCentroid(0), updatedCentroid(1), updatedCentroid(2)));
+        boolean isFinished = true;
+        int count = 0;
+        while(isFinished) {
+            isFinished = false;
+            isFinished = calculateClosestClustersToData(isFinished);
+            if (isFinished == true) {
+                centroids = new ArrayList<>(Arrays.asList(updatedCentroid(0), updatedCentroid(1), updatedCentroid(2)));
+            } else {
+                break;
+            }
+            count++;
+            System.out.println(count);
         }
+            //System.out.println("Times Run: " + count);
     }
 }
