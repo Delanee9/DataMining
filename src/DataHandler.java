@@ -51,6 +51,7 @@ class DataHandler {
         Random rand = new Random();
         return rand.nextInt((max - min) + 1) + min;
     }
+
     public static void printTableToConsole(ArrayList<SingleInstance> dataset)
     {
         System.out.println("Clustering Completed:");
