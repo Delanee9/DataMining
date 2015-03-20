@@ -1,5 +1,8 @@
 import java.util.Calendar;
 
+/**
+ * Class to store date information of a dataset entry.
+ */
 class DateEntry {
     private final String date;
     private final int day;

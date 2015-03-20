@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class ClusterChecker {
-    ArrayList<SingleInstance> initialDataset;
-    ArrayList<Centroid> centroids;
+    final ArrayList<SingleInstance> initialDataset;
+    private ArrayList<Centroid> centroids;
 
     public ClusterChecker(ArrayList<SingleInstance> dataset, ArrayList<Centroid> centroids) {
         this.initialDataset = dataset;
@@ -34,14 +34,13 @@ class ClusterChecker {
      */
     private boolean calculateClosestClustersToData(boolean isFinished) {
         for(SingleInstance s : initialDataset) {
-             isFinished = findClosetCluster(s,isFinished);
-            //System.out.println(s.getClusterClass());
+            isFinished = findClosetCluster(s, isFinished);
         }
         return isFinished;
     }
 
     /**
-     * Check the distance from a point to the centroids.
+     * Check the Euclidean distance from a point to each of the centroids.
      *
      * @param singleInstance SingleInstance
      * @return double
@@ -76,8 +75,7 @@ class ClusterChecker {
                 count++;
             }
         }
-        Centroid c = new Centroid(averageNitricOxide / count, averageSulphurDioxide / count, averageOzone / count);
-        return c;
+        return new Centroid(averageNitricOxide / count, averageSulphurDioxide / count, averageOzone / count);
     }
 
     /**
@@ -90,14 +88,13 @@ class ClusterChecker {
             isFinished = calculateClosestClustersToData(isFinished);
             centroids = new ArrayList<>(Arrays.asList(updatedCentroid(0), updatedCentroid(1), updatedCentroid(2)));
         }
-
         print();
     }
 
     /**
      * Prints the Pollution values from each cluster
      */
-    public void print() {
+    private void print() {
         try {
             FileWriter clusterOne = new FileWriter("clusterOne.csv");
             FileWriter clusterTwo = new FileWriter("clusterTwo.csv");
@@ -106,26 +103,33 @@ class ClusterChecker {
 
             for(SingleInstance singleInstance : initialDataset) {
                 switch(singleInstance.getClusterClass()) {
-                    case 0:     clusterOne.append(String.valueOf(singleInstance.getPollution().getNitricOxide()) + ",");
-                                clusterOne.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide()) + ",");
-                                clusterOne.append(String.valueOf(singleInstance.getPollution().getOzone()) + ",");
-                                clusterOne.append(String.valueOf(singleInstance.getBikeData().getHireTime()) + "\n");
-                                break;
-                    case 1:     clusterTwo.append(String.valueOf(singleInstance.getPollution().getNitricOxide()) + ",");
-                                clusterTwo.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide()) + ",");
-                                clusterTwo.append(String.valueOf(singleInstance.getPollution().getOzone()) + ",");
-                                clusterTwo.append(String.valueOf(singleInstance.getBikeData().getHireTime()) + "\n");
-                                break;
-                    case 2:     clusterThree.append(String.valueOf(singleInstance.getPollution().getNitricOxide()) + ",");
-                                clusterThree.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide()) + ",");
-                                clusterThree.append(String.valueOf(singleInstance.getPollution().getOzone()) + ",");
-                                clusterThree.append(String.valueOf(singleInstance.getBikeData().getHireTime()) + "\n");
-                                break;
-                    case 3:     clusterFour.append(String.valueOf(singleInstance.getPollution().getNitricOxide()) + ",");
-                                clusterFour.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide()) + ",");
-                                clusterFour.append(String.valueOf(singleInstance.getPollution().getOzone()) + ",");
-                                clusterFour.append(String.valueOf(singleInstance.getBikeData().getHireTime()) + "\n");
-                                break;
+                    case 0:
+                        clusterOne.append(String.valueOf(singleInstance.getPollution().getNitricOxide())).append(",");
+                        clusterOne.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide())).append(",");
+                        clusterOne.append(String.valueOf(singleInstance.getPollution().getOzone())).append(",");
+                        clusterOne.append(String.valueOf(singleInstance.getBikeData().getHireTime())).append("\n");
+                        break;
+                    case 1:
+                        clusterTwo.append(String.valueOf(singleInstance.getPollution().getNitricOxide())).append(",");
+                        clusterTwo.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide())).append(",");
+                        clusterTwo.append(String.valueOf(singleInstance.getPollution().getOzone())).append(",");
+                        clusterTwo.append(String.valueOf(singleInstance.getBikeData().getHireTime())).append("\n");
+                        break;
+                    case 2:
+                        clusterThree.append(String.valueOf(singleInstance.getPollution().getNitricOxide())).append(",");
+                        clusterThree.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide())).append(",");
+                        clusterThree.append(String.valueOf(singleInstance.getPollution().getOzone())).append(",");
+                        clusterThree.append(String.valueOf(singleInstance.getBikeData().getHireTime())).append("\n");
+                        break;
+                    case 3:
+                        clusterFour.append(String.valueOf(singleInstance.getPollution().getNitricOxide())).append(",");
+                        clusterFour.append(String.valueOf(singleInstance.getPollution().getSulphurDioxide())).append(",");
+                        clusterFour.append(String.valueOf(singleInstance.getPollution().getOzone())).append(",");
+                        clusterFour.append(String.valueOf(singleInstance.getBikeData().getHireTime())).append("\n");
+                        break;
+
+                    default:
+                        System.out.println("Unknown Cluster Class number");
                 }
             }
 
@@ -139,7 +143,7 @@ class ClusterChecker {
             clusterThree.close();
             clusterFour.close();
         } catch(Exception e) {
-            System.out.println(e);
+            System.out.println("Failure in print() - " + e);
         }
     }
 }

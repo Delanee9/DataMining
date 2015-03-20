@@ -1,3 +1,6 @@
+/**
+ * Object that contains DateEntry, Pollution and BikeData Objects inside.
+ */
 class SingleInstance {
     private final DateEntry dateEntry;
     private final Pollution pollution;
@@ -23,19 +26,19 @@ class SingleInstance {
         return bikeData;
     }
 
-    public void setClusterClass(int clusterClass) {
-        this.clusterClass = clusterClass;
-    }
-
     public int getClusterClass() {
         return clusterClass;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
+    public void setClusterClass(int clusterClass) {
+        this.clusterClass = clusterClass;
     }
 
     public double getDistance() {
         return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

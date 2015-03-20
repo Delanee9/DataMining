@@ -1,3 +1,6 @@
+/**
+ * Class to hold the information relating to pollution levels
+ */
 class Pollution {
     private final double nitricOxide;
     private final double sulphurDioxide;

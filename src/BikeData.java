@@ -1,3 +1,6 @@
+/**
+ * Class that holds data relating to bike hire information.
+ */
 class BikeData {
     private final int hireTime;
     private final int bikeHires;
