@@ -3,6 +3,7 @@ class SingleInstance {
     private final Pollution pollution;
     private final BikeData bikeData;
     private int clusterClass = 10000000;
+    private double distance = 1000000.0;
 
     public SingleInstance(DateEntry dateEntry, Pollution pollution, BikeData bikeData) {
         this.dateEntry = dateEntry;
@@ -28,5 +29,13 @@ class SingleInstance {
 
     public int getClusterClass() {
         return clusterClass;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 }

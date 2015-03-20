@@ -19,8 +19,9 @@ class ClusterChecker {
         double[] distance = distance(singleInstance);
 
         for(int i = 0; i < 3; i++) {
-            if(distance[i] <= singleInstance.getClusterClass()) {
-                singleInstance.setClusterClass(((int) distance[i]));
+            if(distance[i] <= singleInstance.getDistance()) {
+                singleInstance.setClusterClass(i);
+                singleInstance.setDistance(distance[i]);
             }
         }
     }
@@ -28,7 +29,7 @@ class ClusterChecker {
     /**
      * Loop through each element in the dataset and assign it to a cluster.
      */
-    public void calculateClosestClustersToData() {
+    private void calculateClosestClustersToData() {
         for(SingleInstance s : initialDataset) {
             findClosetCluster(s);
             System.out.println(s.getClusterClass());

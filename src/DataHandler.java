@@ -26,7 +26,7 @@ class DataHandler {
             //have dataset, have initial centroids
 
             ClusterChecker checker = new ClusterChecker(dataset,centroids);
-            checker.calculateClosestClustersToData();
+            checker.recheckLoop();
 
 
         } catch(Exception e) {
